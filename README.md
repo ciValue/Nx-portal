@@ -6,8 +6,8 @@
 
 ## Understand this workspace
 
-The workspace demonstrates how we can share context between host and apps (all apps use the same version of the library - 'singleton'),
-and from the other hand use the same ui components library on build time but not on run time (each app has it own version of the library)
+The workspace demonstrates how we can share context between the host and apps (all apps use the same version of the library - 'singleton'),
+and from the other hand use the same UI components library on build time but not on run time (each app has its own version of the library)
 take a look at the configuration at `module-federation.config.js`
 
 Run `nx graph` to see a diagram of the dependencies of the projects.
