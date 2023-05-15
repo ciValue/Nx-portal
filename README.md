@@ -6,12 +6,21 @@
 
 ## Understand this workspace
 
+The workspace demonstrates how we can share context between host and apps (all apps use the same version of the library - 'singleton'),
+and from the other hand use the same ui components library on build time but not on run time (each app has it own version of the library)
+take a look at the configuration at `module-federation.config.js`
+
 Run `nx graph` to see a diagram of the dependencies of the projects.
 
-## Remote caching
+## Running
 
-Run `npx nx connect-to-nx-cloud` to enable [remote caching](https://nx.app) and make CI faster.
+Run `nx serve host --devRemotes="insights,supply-chain"` to serve on http://localhost:4210 .
 
-## Further help
+## Common libs
 
-Visit the [Nx Documentation](https://nx.dev) to learn more.
+### Common-ui
+a shared library with UI elements, the library ***is not shared*** at runtime
+### Common-context
+a shared library with React context providers, the library ***is shared*** at runtime
+
+

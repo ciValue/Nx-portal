@@ -9,23 +9,22 @@ const coreLibraries = new Set([
   '@acme/pub-sub',
 ]);
 
-const sharedLibraries = new Set([
-  '@portal/common-context',
-]);
+const sharedLibraries = {
+  '@portal/common-context' : "libs/common-context/src/index.ts"
+}
 
 module.exports = {
   // Share core libraries, and avoid everything else
   shared: (libraryName, defaultConfig) => {
     if (coreLibraries.has(libraryName)) {
-      console.warn('the name:', libraryName, ' conf: ',defaultConfig)
       return defaultConfig;
     }
 
-    if (sharedLibraries.has(libraryName)) {
-      console.warn('the name:', libraryName, ' singleton import')
+    if (Object.keys(sharedLibraries).includes(libraryName)) {
+      //console.warn('the name:', libraryName, ' singleton import')
       return {
         "singleton": true,
-        "import": "libs/common-context/src/index.ts"
+        "import": sharedLibraries[libraryName]
       }
     }
 
